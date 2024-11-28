@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Songs Homepage - Welcome to My Music Store</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to My Music Store</h1>
+</header>
+<main>
+    <h2>Choose a song:</h2>
+
+    <form method="post" th:action="@{/songs/selectSong}">
+        <div th:each="song : ${listSongs}">
+            <input type="hidden" name="songId" th:value="${song.trackId}">
+            <input type="radio" name="selectedSongId" th:value="${song.trackId}">
+            <label th:for="${song.trackId}">
+                Title: <span th:text="${song.title}"></span>,
+                Genre: <span th:text="${song.genre}"></span>,
+                Release Year: <span th:text="${song.releaseYear}"></span>,
+                Album: <span th:text="${song.album?.name}"></span>
+            </label>
+            <a th:href="@{'/songs/edit/{id}' (id=${song.getTrackId()})}" class="btn">Edit</a>
+            <button type="submit" name="delete" th:formaction="@{'/songs/delete/{id}' (id=${song.getTrackId()})}" class="btn">Delete</button>
+        </div>
+        <input type="submit" value="Submit" name="submit">
+    </form>
+    <a th:href="@{/songs/add}" class="btn" style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">Add New Song</a>
+
+</main>
+</body>
+</html>

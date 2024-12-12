@@ -1,4 +1,5 @@
-package mk.finki.ukim.mk.lab1_gr_b.repository;
+/*
+package mk.finki.ukim.mk.lab1_gr_b.repository.inmemory;
 
 import mk.finki.ukim.mk.lab1_gr_b.bootstrap.DataHolder;
 import mk.finki.ukim.mk.lab1_gr_b.model.Artist;
@@ -46,3 +47,4 @@ public class SongRepository {
         DataHolder.songs.add(song);
     }
 }
+*/

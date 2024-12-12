@@ -22,16 +22,26 @@ public class SongController {
     }
 
     @GetMapping
-    public String getSongsPage(@RequestParam(required = false) String error, Model model) {
-        List<Song> songs = songService.listSongs();
+    public String getSongsPage(@RequestParam(required = false) Long albumId,
+                               @RequestParam(required = false) String error,
+                               Model model) {
+        List<Song> songs;
+        if (albumId != null) {
+            songs = songService.findAllByAlbum_Id(albumId);
+        } else {
+            songs = songService.listSongs();
+        }
+
+        model.addAttribute("listSongs", songs);
+        model.addAttribute("albums", albumService.findAll());
 
         if (error != null && !error.isEmpty()) {
             model.addAttribute("errorMessage", error);
         }
 
-        model.addAttribute("listSongs", songs);
         return "listSongs";
     }
+
 
     @GetMapping("/edit/{id}")
     public String editSong(@PathVariable Long id, Model model) {
@@ -52,14 +62,20 @@ public class SongController {
                                  @RequestParam int releaseYear,
                                  @RequestParam Long albumId) {
         Album album = albumService.findById(albumId);
-        songService.updateSong(id, new Song(title, genre, releaseYear, album));
+        Song song = songService.findByTrackId(id);
+        if (song == null) {
+            return "redirect:/songs?error=Song+not+found";
+        }
+        song.setTitle(title);
+        song.setGenre(genre);
+        song.setReleaseYear(releaseYear);
+        song.setAlbum(album);
+        songService.updateSong(id, song);
         return "redirect:/songs";
     }
 
-
-
     @PostMapping("/delete/{id}")
-    public String deleteCourse(@PathVariable Long id){
+    public String deleteCourse(@PathVariable Long id) {
         Song song = songService.findByTrackId(id);
         this.songService.deleteSong(song);
         return "redirect:/songs";
@@ -85,12 +101,17 @@ public class SongController {
     public String saveSong(@RequestParam String title,
                            @RequestParam String genre,
                            @RequestParam int releaseYear,
-                           @RequestParam Long albumId){
+                           @RequestParam Long albumId) {
         Album album = albumService.findById(albumId);
-        Song song = new Song(title, genre, releaseYear, album);
+        Song song = new Song();
+        song.setTitle(title);
+        song.setGenre(genre);
+        song.setReleaseYear(releaseYear);
+        song.setAlbum(album);
         songService.saveSong(song);
         return "redirect:/songs";
     }
+
     @GetMapping("/songDetails/{id}")
     public String getSongDetails(@PathVariable Long id, Model model) {
         Song song = songService.findByTrackId(id);
@@ -111,4 +132,3 @@ public class SongController {
         return "redirect:/songs/songDetails/" + songId;
     }
 }
-

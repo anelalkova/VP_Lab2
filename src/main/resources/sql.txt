@@ -1,0 +1,20 @@
+INSERT INTO Album (name, genre, release_year) VALUES ('Thriller', 'Pop', '1982');
+INSERT INTO Album (name, genre, release_year) VALUES ('Back in Black', 'Rock', '1980');
+INSERT INTO Album (name, genre, release_year) VALUES ('The Dark Side of the Moon', 'Progressive Rock', '1973');
+
+INSERT INTO Artist (first_name, last_name, bio) VALUES ('Michael', 'Jackson', 'Known as the King of Pop.');
+INSERT INTO Artist (first_name, last_name, bio) VALUES ('Brian', 'Johnson', 'Lead vocalist of AC/DC.');
+INSERT INTO Artist (first_name, last_name, bio) VALUES ('David', 'Gilmour', 'Guitarist and co-lead vocalist of Pink Floyd.');
+
+INSERT INTO Song (title, genre, release_year, album_id) VALUES ('Billie Jean', 'Pop', 1982, 1);
+INSERT INTO Song (title, genre, release_year, album_id) VALUES ('Back in Black', 'Rock', 1980, 2);
+INSERT INTO Song (title, genre, release_year, album_id) VALUES ('Money', 'Progressive Rock', 1973, 3);
+
+INSERT INTO song_ratings (song_id, rating) VALUES (1, 5);
+INSERT INTO song_ratings (song_id, rating) VALUES (1, 4);
+INSERT INTO song_ratings (song_id, rating) VALUES (2, 5);
+INSERT INTO song_ratings (song_id, rating) VALUES (3, 4);
+
+INSERT INTO Song_performers (performers_id, song_track_id) VALUES (1, 1);
+INSERT INTO Song_performers (performers_id, song_track_id) VALUES (2, 2);
+INSERT INTO Song_performers (performers_id, song_track_id) VALUES (3, 3);

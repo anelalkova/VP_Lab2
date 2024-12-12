@@ -13,4 +13,5 @@ public interface SongService{
     void deleteSong(Song song);
     void updateSong(Long id, Song song);
     void saveSong(Song song);
+    List<Song>findAllByAlbum_Id(Long albumId);
 }

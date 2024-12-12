@@ -5,11 +5,8 @@ import mk.finki.ukim.mk.lab1_gr_b.model.Song;
 import mk.finki.ukim.mk.lab1_gr_b.service.ArtistService;
 import mk.finki.ukim.mk.lab1_gr_b.service.SongService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -17,8 +14,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/artist")
 public class ArtistController {
-    ArtistService artistService;
-    SongService songService;
+    private final ArtistService artistService;
+    private final SongService songService;
 
     public ArtistController(ArtistService artistService, SongService songService) {
         this.artistService = artistService;
@@ -50,7 +47,7 @@ public class ArtistController {
             return "redirect:/artist";
         }
 
-        Artist artist = artistService.ArtistfindById(artistId);
+        Artist artist = artistService.findById(artistId);
         Song song = songService.findByTrackId(songId);
         if (artist != null && song != null) {
             songService.addArtistToSong(artist, song);
@@ -61,5 +58,4 @@ public class ArtistController {
 
         return "redirect:/songs/songDetails/" + songId;
     }
-
 }

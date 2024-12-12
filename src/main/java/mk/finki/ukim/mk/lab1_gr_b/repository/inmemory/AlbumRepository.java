@@ -1,4 +1,5 @@
-package mk.finki.ukim.mk.lab1_gr_b.repository;
+/*
+package mk.finki.ukim.mk.lab1_gr_b.repository.inmemory;
 
 import mk.finki.ukim.mk.lab1_gr_b.bootstrap.DataHolder;
 import mk.finki.ukim.mk.lab1_gr_b.model.Album;
@@ -15,3 +16,4 @@ public class AlbumRepository {
         return DataHolder.albums.stream().filter(a -> a.getId() == id).findFirst().orElse(null);
     }
 }
+*/

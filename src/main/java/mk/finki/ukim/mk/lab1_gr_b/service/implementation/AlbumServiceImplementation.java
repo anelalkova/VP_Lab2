@@ -1,7 +1,7 @@
 package mk.finki.ukim.mk.lab1_gr_b.service.implementation;
 
 import mk.finki.ukim.mk.lab1_gr_b.model.Album;
-import mk.finki.ukim.mk.lab1_gr_b.repository.AlbumRepository;
+import mk.finki.ukim.mk.lab1_gr_b.repository.jpa.AlbumRepository;
 import mk.finki.ukim.mk.lab1_gr_b.service.AlbumService;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,7 @@ public class AlbumServiceImplementation implements AlbumService{
     }
     @Override
     public Album findById(long id) {
-        return this.albumRepository.findById(id);
+        return albumRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Album not found with ID: " + id));
     }
 }

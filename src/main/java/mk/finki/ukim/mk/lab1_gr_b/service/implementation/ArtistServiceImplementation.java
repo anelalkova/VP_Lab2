@@ -1,17 +1,16 @@
 package mk.finki.ukim.mk.lab1_gr_b.service.implementation;
 
 import mk.finki.ukim.mk.lab1_gr_b.model.Artist;
-import mk.finki.ukim.mk.lab1_gr_b.repository.ArtistRepository;
+import mk.finki.ukim.mk.lab1_gr_b.repository.jpa.ArtistRepository;
 import mk.finki.ukim.mk.lab1_gr_b.service.ArtistService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ArtistServiceImplementation implements ArtistService {
 
-    private ArtistRepository artistRepository;
+    private final ArtistRepository artistRepository;
 
     public ArtistServiceImplementation(ArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
@@ -23,7 +22,8 @@ public class ArtistServiceImplementation implements ArtistService {
     }
 
     @Override
-    public Artist ArtistfindById(Long id) {
-        return artistRepository.findById(id);
+    public Artist findById(Long id) {
+        return artistRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Artist not found with ID: " + id));
     }
 }

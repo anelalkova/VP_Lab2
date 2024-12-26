@@ -1,0 +1,122 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Song List Styling */
+.song-list {
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.song-card {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.song-card label {
+    display: flex;
+    align-items: center;
+}
+
+.song-card input[type="radio"] {
+    margin-right: 10px;
+}
+
+.song-card .actions {
+    margin-top: 0.5rem;
+}
+
+.song-card .actions .btn {
+    margin-right: 10px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn {
+    background-color: #2ecc71;
+}
+
+.submit-btn:hover {
+    background-color: #27ae60;
+}
+
+.add-btn {
+    background-color: #3498db;
+}
+
+.add-btn:hover {
+    background-color: #2980b9;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.edit-btn {
+    background-color: #f1c40f;
+}
+
+.edit-btn:hover {
+    background-color: #f39c12;
+}
+
+.review-btn {
+    background-color: #8e44ad;
+}
+
+.review-btn:hover {
+    background-color: #732d91;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
